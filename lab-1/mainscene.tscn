@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0w2wfjpybk7u"]
+
+[ext_resource type="Texture2D" uid="uid://ff2yhqdifl1" path="res://icon.svg" id="1_3ymvr"]
+[ext_resource type="Texture2D" uid="uid://cgmhj5yxfebyc" path="res://happy-smile-face-icon-png.webp" id="2_05lbw"]
+[ext_resource type="PackedScene" uid="uid://cbrnr473hs681" path="res://SmilyFace.tscn" id="2_5lnme"]
+[ext_resource type="Texture2D" uid="uid://ciqb2qd10exi8" path="res://png-clipart-bar-party-cheer-silhouette-figures-party-character-thumbnail.png" id="3_iwsk0"]
+
+[node name="Icon" type="Sprite2D"]
+modulate = Color(1, 0.294118, 1, 1)
+position = Vector2(164, 348)
+scale = Vector2(0.96, 1)
+texture = ExtResource("1_3ymvr")
+
+[node name="Tree3" type="Node2D" parent="."]
+position = Vector2(750, -265)
+
+[node name="Trunk" type="ColorRect" parent="Tree3"]
+modulate = Color(0.407843, 0.301961, 0.0196078, 1)
+anchors_preset = -1
+anchor_top = -0.347
+offset_left = -6.10352e-05
+offset_right = 65.9999
+offset_bottom = 386.584
+metadata/_edit_use_anchors_ = true
+
+[node name="Leaves" type="ColorRect" parent="Tree3"]
+modulate = Color(0, 1, 0.254902, 1)
+offset_left = -57.2917
+offset_top = -75.0
+offset_right = 121.708
+offset_bottom = 53.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Tree2" type="Node2D" parent="."]
+position = Vector2(-78.1251, -105)
+
+[node name="Trunk" type="ColorRect" parent="Tree2"]
+modulate = Color(0.407843, 0.301961, 0.0196078, 1)
+anchors_preset = -1
+anchor_top = -0.347
+offset_left = -6.10352e-05
+offset_right = 65.9999
+offset_bottom = 386.584
+metadata/_edit_use_anchors_ = true
+
+[node name="Leaves" type="ColorRect" parent="Tree2"]
+modulate = Color(0, 1, 0.254902, 1)
+offset_left = -57.2917
+offset_top = -75.0
+offset_right = 121.708
+offset_bottom = 53.0
+metadata/_edit_use_anchors_ = true
+
+[node name="party2" parent="." instance=ExtResource("2_5lnme")]
+modulate = Color(0.964371, 0.378601, 0.66094, 1)
+show_behind_parent = true
+light_mask = 773
+visibility_layer = 9
+position = Vector2(396.636, -9.00003)
+scale = Vector2(3.24336, 1.70115)
+texture = ExtResource("3_iwsk0")
+
+[node name="Robot" type="Sprite2D" parent="."]
+
+[node name="SmilyFace" type="Sprite2D" parent="."]
+position = Vector2(305.729, -39.5)
+scale = Vector2(1.1901, 1.1025)
+texture = ExtResource("2_05lbw")
+
+[node name="robot1" type="Sprite2D" parent="SmilyFace"]
+position = Vector2(246.424, 182.766)
+scale = Vector2(0.840263, 0.907029)
+texture = ExtResource("1_3ymvr")
+
+[node name="party" parent="." instance=ExtResource("2_5lnme")]
+modulate = Color(0.964371, 0.378601, 0.66094, 1)
+show_behind_parent = true
+light_mask = 773
+visibility_layer = 9
+position = Vector2(430.208, -23)
+scale = Vector2(3.07436, 1.70115)
+texture = ExtResource("3_iwsk0")
