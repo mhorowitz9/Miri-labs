@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://cv8tg4xny4wy0"]
+
+[ext_resource type="Texture2D" uid="uid://ce51e0xxoeciy" path="res://icon.svg" id="1_yotkq"]
+[ext_resource type="Script" path="res://character_body_3d.gd" id="2_e74ov"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qih67"]
+albedo_color = Color(1, 0.741176, 0.294118, 1)
+roughness_texture = ExtResource("1_yotkq")
+uv1_scale = Vector3(8, 8, 8)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eoqcs"]
+sky_top_color = Color(0.732051, 0.000358093, 0.71909, 1)
+sky_horizon_color = Color(0.693569, 0.549958, 0.733116, 1)
+ground_bottom_color = Color(0.0422249, 0.199474, 0.213372, 1)
+ground_horizon_color = Color(0.693569, 0.549958, 0.733116, 1)
+
+[sub_resource type="Sky" id="Sky_ag0ce"]
+sky_material = SubResource("ProceduralSkyMaterial_eoqcs")
+
+[sub_resource type="Environment" id="Environment_67clh"]
+background_mode = 2
+sky = SubResource("Sky_ag0ce")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ut1lr"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pny81"]
+
+[node name="level" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999507, 0.0313933, 0, -0.0313933, 0.999507, -0.17718, 0.476168, 0.678721)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.99916, -0.0409661, -0.0012867, 0.0409661, 0.999161, -2.63788e-05, 0.0012867, -2.63788e-05, 0.999999, 7.10566, -5.05789, -4.04958)
+use_collision = true
+size = Vector3(100, 1.05188, 100)
+material = SubResource("StandardMaterial3D_qih67")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.989073, -0.13353, 0.062493, -0.00462831, -0.451797, -0.892109, 0.147357, 0.882071, -0.447478, 0.775796, -4.67126, -3.74531)
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.999825, 0.0187171, 0.00058788, -0.0186759, 0.998945, -0.0419683, -0.00137278, 0.04195, 0.999119, 4.1711, -4.5789, -4.43576)
+use_collision = true
+radius = 1.90211
+sides = 64
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_67clh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, -0.0406002, 5.39281, -0.702234)
+light_color = Color(1, 1, 0.317647, 1)
+light_energy = 24.15
+shadow_enabled = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("2_e74ov")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_ut1lr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_pny81")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0.212883, -0.0171472, 3.10724)
